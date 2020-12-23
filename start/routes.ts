@@ -18,26 +18,29 @@
 |
 */
 
-import User from 'App/Models/User'
-import { UserFactory } from 'Database/factories'
+import User from 'App/Models/User';
+import { UserFactory } from 'Database/factories';
 
 const users = async () => {
-  const temp = await User.all()
-  console.log('teste')
+  const temp = await User.all();
+  console.log('teste');
   temp.map((user) => {
-    console.log(user['$attributes'])
-  })
-}
+    console.log(user['$attributes']['id']);
+    console.log(user['$attributes']['email']);
+    console.log(user['$attributes']['password']);
+    console.log();
+  });
+};
 
 const dummyData = async () => {
-  const users = await UserFactory.createMany(5)
-  console.log(users)
-}
+  const users = await UserFactory.createMany(5);
+  console.log(users);
+};
 
-users()
+users();
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from '@ioc:Adonis/Core/Route';
 
 Route.get('/', async () => {
-  return { hello: 'world' }
-})
+  return { hello: 'world' };
+});
