@@ -10,7 +10,7 @@ export default class AuthController {
         rules.email(),
         rules.unique({ table: "users", column: "email" }),
       ]),
-      password: schema.string({ trim: true }, [rules.confirmed()]),
+      password: schema.string(),
       remember_me_token: schema.string(),
     });
 
@@ -25,7 +25,8 @@ export default class AuthController {
     user.remember_me_token = userDetails.remember_me_token;
     await user.save();
 
-    await auth.login(user);
-    response.redirect("/dashboard");
+    return { Status: "User created" };
+    // await auth.login(user);
+    // response.redirect("/dashboard");
   }
 }
