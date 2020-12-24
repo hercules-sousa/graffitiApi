@@ -3,7 +3,7 @@ import { schema, rules } from "@ioc:Adonis/Core/Validator";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class AuthController {
-  public async register({ request }: HttpContextContract) {
+  public async register({ request, auth, response }: HttpContextContract) {
     const validationSchema = schema.create({
       username: schema.string(),
       email: schema.string({ trim: true }, [
@@ -25,6 +25,7 @@ export default class AuthController {
     user.remember_me_token = userDetails.remember_me_token;
     await user.save();
 
-    return "Your account has been created";
+    await auth.login(user);
+    response.redirect("/dashboard");
   }
 }
