@@ -5,10 +5,10 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env';
-import { OrmConfig } from '@ioc:Adonis/Lucid/Orm';
-import Application from '@ioc:Adonis/Core/Application';
-import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database';
+import Env from "@ioc:Adonis/Core/Env";
+import { OrmConfig } from "@ioc:Adonis/Lucid/Orm";
+import Application from "@ioc:Adonis/Core/Application";
+import { DatabaseConfig } from "@ioc:Adonis/Lucid/Database";
 
 const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   /*
@@ -21,7 +21,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   | file.
   |
   */
-  connection: Env.get('DB_CONNECTION'),
+  connection: Env.get("DB_CONNECTION"),
 
   connections: {
     /*
@@ -36,9 +36,9 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
     |
     */
     sqlite: {
-      client: 'sqlite',
+      client: "sqlite",
       connection: {
-        filename: Application.tmpPath('db.sqlite3'),
+        filename: Application.tmpPath("db.sqlite3"),
       },
       useNullAsDefault: true,
       healthCheck: false,
