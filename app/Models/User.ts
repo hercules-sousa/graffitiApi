@@ -17,6 +17,18 @@ export default class User extends BaseModel {
   public password: string;
 
   @column()
+  public number: string;
+
+  @column()
+  public city: string;
+
+  @column()
+  public state: string;
+
+  @column()
+  public country: string;
+
+  @column()
   public remember_me_token: string;
 
   @column.dateTime({ autoCreate: true })
