@@ -2,11 +2,7 @@ import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Post from "App/Models/Post";
 import User from "App/Models/User";
 
-interface UserAndPostsProps {
-	id: number;
-	user: Object;
-	posts: Array<Object>;
-}
+import { UserAndPostsProps } from "./props";
 
 export default class UsersController {
 	public async index() {
