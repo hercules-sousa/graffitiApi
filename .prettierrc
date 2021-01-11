@@ -2,7 +2,7 @@
   "trailingComma": "es5",
   "semi": true,
   "singleQuote": false,
-  "useTabs": false,
+  "useTabs": true,
   "quoteProps": "consistent",
   "bracketSpacing": true,
   "arrowParens": "always",

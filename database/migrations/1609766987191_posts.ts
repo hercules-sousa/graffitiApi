@@ -6,7 +6,8 @@ export default class Posts extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments("id");
-      table.foreign("user_id").references("users.id").onDelete("CASCADE").notNullable();
+      table.integer("user_id").notNullable();
+      table.foreign("user_id").references("id").inTable("users").onDelete("CASCADE");
       table.string("art_image").notNullable();
       table.integer("likes").notNullable();
       table.timestamps(true);
