@@ -27,8 +27,9 @@ export default class UsersController {
 	public async getAllUsersAndPosts() {
 		let usersAndPosts: Array<UserAndPostsProps> = [];
 		const users = await User.all();
-		for (let position in users) {
-			const user = users[position];
+		let position: number;
+		for (position = 0; position < users.length; position++) {
+			const user = users[users.length - 1 - position];
 			const posts = await Post.query().select("*").where("user_id", "=", user.id);
 			usersAndPosts.push({
 				id: Number(position),
