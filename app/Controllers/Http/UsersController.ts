@@ -2,8 +2,10 @@ import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Post from "App/Models/Post";
 import User from "App/Models/User";
 
-interface UserProps {
+interface UserAndPostsProps {
 	id: number;
+	user: Object;
+	posts: Array<Object>;
 }
 
 export default class UsersController {
@@ -26,17 +28,18 @@ export default class UsersController {
 		};
 	}
 
-	public async getUsersAndPosts() {
-		let usersAndPosts = [{}];
+	public async getAllUsersAndPosts() {
+		let usersAndPosts: Array<UserAndPostsProps> = [];
 		const users = await User.all();
-		users.forEach(async (user) => {
-			const { id } = user;
-			await this.getSingleUserAndPostsById(Number(id)).then((result) => {
-				console.log("RESULTADO AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
-				console.log(result);
-				usersAndPosts.push(result);
+		for (let position in users) {
+			const user = users[position];
+			const posts = await Post.query().select("*").where("user_id", "=", user.id);
+			usersAndPosts.push({
+				id: Number(position),
+				user,
+				posts,
 			});
-		});
+		}
 		return usersAndPosts;
 	}
 }

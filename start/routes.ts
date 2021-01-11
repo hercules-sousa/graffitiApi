@@ -14,5 +14,6 @@ Route.get("dashboard", async ({ auth }) => {
 Route.get("users", "UsersController.index");
 Route.get("posts", "PostsController.index");
 
+Route.get("users-and-posts", "UsersController.getAllUsersAndPosts");
+
 Route.get("user/:id", "UsersController.getSingleUserAndPosts");
-Route.get("users-and-posts", "UsersController.getUsersAndPosts");

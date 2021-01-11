@@ -3,7 +3,7 @@
 import Post from "App/Models/Post";
 
 export default class PostsController {
-  public async index() {
-    return await Post.all();
-  }
+	public async index() {
+		return await Post.all();
+	}
 }
