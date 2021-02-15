@@ -6,8 +6,7 @@ import { UserAndPostsProps } from "./props";
 
 export default class UsersController {
 	public async index() {
-		const users = await User.all();
-		return users;
+		return await User.all();
 	}
 
 	public async getSingleUserAndPosts(request: HttpContextContract) {

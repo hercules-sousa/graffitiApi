@@ -17,44 +17,16 @@ import { AuthConfig } from "@ioc:Adonis/Addons/Auth";
 |
 */
 const authConfig: AuthConfig = {
-  guard: "web",
-  list: {
-    /*
-    |--------------------------------------------------------------------------
-    | Web Guard
-    |--------------------------------------------------------------------------
-    |
-    | Web guard uses classic old school sessions for authenticating users.
-    | If you are building a standard web application, it is recommended to
-    | use web guard with session driver
-    |
-    */
-    web: {
-      driver: "session",
+	guard: "web",
+	list: {
+		web: {
+			driver: "session",
 
-      provider: {
-        /*
-        |--------------------------------------------------------------------------
-        | Driver
-        |--------------------------------------------------------------------------
-        |
-        | Name of the driver
-        |
-        */
-        driver: "lucid",
+			provider: {
+				driver: "lucid",
+				identifierKey: "id",
 
-        /*
-        |--------------------------------------------------------------------------
-        | Identifier key
-        |--------------------------------------------------------------------------
-        |
-        | The identifier key is the unique key on the model. In most cases specifying
-        | the primary key is the right choice.
-        |
-        */
-        identifierKey: "id",
-
-        /*
+				/*
         |--------------------------------------------------------------------------
         | Uids
         |--------------------------------------------------------------------------
@@ -64,9 +36,9 @@ const authConfig: AuthConfig = {
         | of the mentioned columns to find their user record.
         |
         */
-        uids: ["email"],
+				uids: ["email"],
 
-        /*
+				/*
         |--------------------------------------------------------------------------
         | Model
         |--------------------------------------------------------------------------
@@ -77,10 +49,10 @@ const authConfig: AuthConfig = {
         | that time.
         |
         */
-        model: () => import("App/Models/User"),
-      },
-    },
-  },
+				model: () => import("App/Models/User"),
+			},
+		},
+	},
 };
 
 export default authConfig;

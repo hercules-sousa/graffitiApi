@@ -5,6 +5,7 @@ Route.get("/", async () => {
 });
 
 Route.post("register", "AuthController.register");
+Route.post("login", "AuthController.login");
 
 Route.get("dashboard", async ({ auth }) => {
 	const user = auth.authenticate();
